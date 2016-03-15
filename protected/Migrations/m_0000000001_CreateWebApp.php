@@ -15,7 +15,7 @@ class m_0000000001_CreateWebApp extends Migration {
                 'nick' => ['type' => 'string', 'length' => 50],
                 'email' => ['type' => 'string'],
                 'pass' => ['type' => 'string'],
-                'dateRegister' => ['type' => 'date'],
+                'dateRegister' => ['type' => 'datetime'],
                     ], [
                 ['columns' => ['firstName']],
                 ['columns' => ['lastName']],
@@ -29,7 +29,7 @@ class m_0000000001_CreateWebApp extends Migration {
                 'text' => ['type' => 'text'],
                 'likes' => ['type' => 'integer'],
                 'image' => ['type' => 'string'],
-                'dateRegister' => ['type' => 'date'],
+                'dateRegister' => ['type' => 'datetime'],
                     ], [
                 ['columns' => ['title']],
                 ['columns' => ['dateRegister']],
@@ -50,10 +50,10 @@ class m_0000000001_CreateWebApp extends Migration {
         if (!$this->existsTable('PostsInUser')) {
             $this->createTable('PostsInUser', [
                 'userId' => ['type' => 'link'],
-                'friendId' => ['type' => 'link'],
+                'postId' => ['type' => 'link'],
                     ], [
                 ['columns' => ['userId']],
-                ['columns' => ['friendId']],
+                ['columns' => ['postId']],
                     ]
             );
         }

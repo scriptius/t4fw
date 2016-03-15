@@ -1,6 +1,4 @@
-
-# Minimal web-application based on T4 framework
-
-Use 
-<code>composer create-project pr-of-it/t4-app-mini --stability="dev"</code>
-to install this application
+Проект задумывался как подобие
+некой социальной сети. В которой пользователи
+могут добавлять друг друга в друзья и обмениваться постами.
+Проект не доделан

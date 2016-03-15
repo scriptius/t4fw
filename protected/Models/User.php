@@ -14,26 +14,40 @@ class User extends Model {
             'nick' => ['type' => 'string'],
             'email' => ['type' => 'string'],
             'pass' => ['type' => 'string'],
-            'dateRegister' => ['type' => 'date'],
-        ]
+            'dateRegister' => ['type' => 'datetime'],
+        ],
+        'relations' => [
+            '__id' => ['type' => self::HAS_MANY, 'model' => Friends::class],
+                    ],
     ];
 
-    public function __construct(array $user = null) {
-//        if (null == $user) trow new \T4\Orm\Exception('Вы не ввели данныеля пользователя', 7 $previous)
-        $this->fill($user);
-        $this->save();
+    public function __construct() {
+
+
     }
 
     public function addFriend(User $user) {
-//        var_dump($user['nick']);
-//        die;
-        if ($this->nick == $user['nick']) return false;
+
+        if ($this->__id == $user['__id']) throw new \T4\Orm\Exception('Вы не можете дабавить в друзья самого себя');
         $dbh = $this->getDbConnection();
         $query = 'INSERT INTO `Friends`(`userId`, `friendId`) VALUES (:userId , :friendId)';
-        $params['userId'] = $this->nick;
-        $params['friendId'] = $user['nick'];
+        $params['userId'] = $this->__id;
+        $params['friendId'] = $user['__id'];
         $dbh->execute($query, $params);
       
     }
+
+    public function addPost(Post $post) {
+//        if ($this->__id == $user['__id']) throw new \T4\Orm\Exception('Вы не можете дабавить в друзья самого себя');
+        $dbh = $this->getDbConnection();
+        $query = 'INSERT INTO `PostsInUser`(`userId`, `postId`) VALUES (:userId , :postId)';
+        $params['userId'] = $this->__id;
+        $params['postId'] = $post['__id'];
+        $dbh->execute($query, $params);
+
+    }
+
+
+
 
 }

@@ -1,0 +1,27 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    <h1>Регистрация пользователей</h1>
+
+<table border="0" cellpadding="30" cellspacing="0">
+    <tr>
+        <td>
+            <form  method="POST" action="http://t4fw/Admin/Registration">
+                <br><input required="" type="text" name="firstName" size="48" value="" > Имя <br>
+                <br><input required="" type="text" name="lastName" size="48" value="" > Фамилия <br>
+                <br><input required="" type="text" name="nick" size="48" value="" > Логин <br>
+                <br><input required="" type="text" name="pass" size="48" value="" > Пароль <br>
+                <br><input required="" type="text" name="email" size="48" value="" > E-mail <br>
+                <br><input required="" type="hidden" name="dateRegister" size="48" value="{{ date().timestamp | date('m/d/Y') }}" > <br>
+
+                <br><input type="submit" value="Опубликовать">
+            </form>
+        </td>
+    </tr>
+</table>
+{% endblock %}
+
+{% block end %}
+{{item}}
+{% endblock %}
+
