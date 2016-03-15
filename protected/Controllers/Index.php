@@ -25,7 +25,7 @@ $user2 = User::findByColumn('nick', 'xxx');
 //            'email' => 'test@local.com',
 //            'pass' => 'nfv;oiqnf;ovin',
 //            'dateRegister' => '2016-03-14 22:17:00']);
-$user1->addFriend($user2);
+// $user1->addFriend($user2);
 //var_dump($user);
 
     }
